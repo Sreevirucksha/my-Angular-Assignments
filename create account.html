@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account Form</title>
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+       background-image: url(sol\ clr.png);
+       background-position: center;
+       min-height: 100vh;
+       background-size: cover;
+       
+    }
+    
+    .container {
+        width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        background: transparent;
+        border: solid black 1px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+        text-align: center;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    label {
+        margin-bottom: 5px;
+    }
+    
+    input {
+        padding: 15px;
+        margin-bottom: 15px;
+        border: 1px solid black;
+        border-radius: 4px;
+    }
+    
+    button {
+        padding: 15px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: medium;
+    }
+    
+    button:hover {
+        background-color: #324902;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create Account Form</h2>
+        <form id="accountForm" onsubmit="return validateForm()">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required><br><br>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required><br><br>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br><br>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+   <script>
+    function validateForm() {
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+    
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
