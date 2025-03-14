@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shayan Academy</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0 ;
+        }
+        nav{
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+        li,ul,h1 {
+            display: inline;
+
+        }
+        ul {
+            margin-left: 800px;
+            cursor: pointer;
+        }
+        li:hover{
+            color: rgb(3, 146, 75);
+        }
+        h1 {
+            margin-left: 30px;
+        }
+        body {
+            background-image: url(nature\ img.jpg) ;
+            background-size: cover;
+            min-height: 100vh;
+            background-position: center;
+           
+        }
+        .page {
+            font-family: cursive;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <h1>Shayan Academy</h1>
+            <ul>
+                <li><a href="#home" onclick="showPage('home')">Home |</a></li>
+                <li><a href="#about" onclick="showPage('about')">About us |</a></li>
+                <li><a href="contact us form.html">Contact us |</a></li>
+                <li><a href="login form.html">Login |</a></li>
+                <li><a href="create account.html">Create Account |</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main>
+        <section id="home" class="page">"Welcome to Shayan"</section>
+        <section id="about" class="page" style="display: none;">"Welcome to Shayan. We are software professionals"</section>
+      
+    </main>  
+    
+    <script>
+        function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.style.display = 'none';
+    });
+
+    const activePage = document.getElementById(pageId);
+    activePage.style.display = 'block';
+}
+
+// Show the home page by default
+document.getElementById('home').style.display = 'block';
+
+    </script>
+</body>
+</html>
