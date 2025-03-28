@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Validation</title>
+    <style>
+        .error-message {
+            color: red;
+            font-size: 12px;
+            display: block;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url(floral.jpg);
+            background-size: cover;
+            min-height: 100vh;
+            background-position: center;
+        }
+        h1{
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        label {
+            display:block;
+            margin-top: 10px;
+        }
+        input, select, button {
+            width: 95%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #2e60c57b;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: rgb(215, 33, 60);
+        }
+    </style>
+</head>
+<body>
+    <form id="accountForm">
+        <h1>Create Account</h1>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        <span id="firstNameError" class="error-message"></span>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <span id="passwordError" class="error-message"></span>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <span id="confirmPasswordError" class="error-message"></span>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" min="1" name="age" required>
+        <span id="ageError" class="error-message"></span>
+
+        <label >Gender:</label>
+        <div style="display: inline-flex; gap: 10px; align-items: center;">
+            <input type="radio" name="gender" > Male
+         <input type="radio" name="gender" > Female
+        </div>
+        <label>Games:</label>
+        <div style="display: inline-flex; gap: 10px; align-items: center;">
+            <input type="checkbox" name="games" value="kabadi"> Kabadi
+        <input type="checkbox" name="games" value="cricket"> Cricket
+        <input type="checkbox" name="games" value="football"> Football
+        <input type="checkbox" name="games" value="hockey"> Hockey
+        </div>
+        <label for="heroes">Heroes:</label>
+        <select id="heroes">
+            <option value="vijay">Vijay</option>
+            <option value="surya">Surya</option>
+            <option value="ajith">Ajith</option>
+            <option value="sk">SK</option>
+        </select>
+
+        <button type="submit" id="createAccountButton" disabled>Create Account</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('accountForm');
+        const firstNameInput = document.getElementById('firstName');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const ageInput = document.getElementById('age');
+        const createAccountButton = document.getElementById('createAccountButton');
+
+        const firstNameError = document.getElementById('firstNameError');
+        const passwordError = document.getElementById('passwordError');
+        const confirmPasswordError = document.getElementById('confirmPasswordError');
+        const ageError = document.getElementById('ageError');
+
+        form.addEventListener('input', () => {
+            let valid = true;
+
+            // Validate First Name
+            if (firstNameInput.value.trim() === '') {
+                firstNameError.textContent = 'First Name cannot be empty';
+                valid = false;
+            } else {
+                firstNameError.textContent = '';
+            }
+
+            // Validate Password
+            if (passwordInput.value.trim() === '') {
+                passwordError.textContent = 'Password cannot be empty';
+                valid = false;
+            } else {
+                passwordError.textContent = '';
+            }
+
+            // Validate Confirm Password
+            if (confirmPasswordInput.value.trim() === '') {
+                confirmPasswordError.textContent = 'Confirm Password cannot be empty';
+                valid = false;
+            } else if (confirmPasswordInput.value !== passwordInput.value) {
+                confirmPasswordError.textContent = 'Passwords do not match';
+                valid = false;
+            } else {
+                confirmPasswordError.textContent = '';
+            }
+
+            // Validate Age
+            if (ageInput.value.trim() === '' || ageInput.value <= 0) {
+                ageError.textContent = 'Age cannot be empty or zero';
+                valid = false;
+            } else {
+                ageError.textContent = '';
+            }
+
+            // Enable Submit Button if All Fields Are Valid
+            createAccountButton.disabled = !valid;
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Account created successfully!');
+        });
+    </script>
+</body>
+</html>
